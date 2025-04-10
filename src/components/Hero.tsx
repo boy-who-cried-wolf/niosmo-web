@@ -6,11 +6,12 @@ const Hero = () => {
   return (
     <div className="relative bg-gradient-to-br from-light-50 to-light-100 dark:from-dark-900 dark:to-dark-800 overflow-hidden">
       <div className="container-custom py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="md:col-span-2"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-light-900 dark:text-dark-100 leading-tight">
               FEELING <span className="text-primary-500">FINANCIALLY STRESSED?</span>
@@ -32,38 +33,8 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative z-10">
-              <div className="w-full h-64 md:h-96 bg-light-100 dark:bg-dark-700 rounded-lg shadow-xl flex items-center justify-center">
-                <span className="text-primary-500 text-lg font-medium">Financial Wellness Image</span>
-              </div>
-            </div>
-            <motion.div
-              className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary-500 rounded-full opacity-20 blur-sm"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.2, 0.3, 0.2],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            <motion.div
-              className="absolute -top-4 -left-4 w-16 h-16 bg-light-200 dark:bg-dark-700 rounded-full opacity-50 blur-sm"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.5, 0.6, 0.5],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </motion.div>
+            className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden"
+          />
         </div>
       </div>
       
