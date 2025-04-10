@@ -1,9 +1,9 @@
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline';
-import { useTheme } from '../context/ThemeContext';
 import niosmoLogo from '../assets/images/niosmo-logo.png';
+import { useTheme } from '../context/ThemeContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

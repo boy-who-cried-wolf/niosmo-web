@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Particles from 'react-tsparticles';
+import { loadFull } from 'tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 import type { Engine } from 'tsparticles-engine';
 
