@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { useTheme } from '../context/ThemeContext';
+import niosmoLogo from '../assets/images/niosmo-logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,7 @@ const Navbar = () => {
             <Link to="/" className="flex items-center">
               <img
                 className="h-8 w-auto"
-                src="/logo.svg"
+                src={niosmoLogo}
                 alt="Niosmo"
               />
             </Link>

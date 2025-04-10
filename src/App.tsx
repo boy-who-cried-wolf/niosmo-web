@@ -7,11 +7,13 @@ import Features from './components/Features';
 import News from './components/News';
 import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
+import MetaTags from './components/MetaTags';
 
 const App = () => {
   return (
     <ThemeProvider>
       <Router>
+        <MetaTags />
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-grow">

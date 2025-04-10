@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import niosmoLogo from '../assets/images/niosmo-logo.png';
 
 const Footer = () => {
   const footerLinks = {
@@ -29,7 +30,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center mb-6">
               <img
                 className="h-8 w-auto"
-                src="/logo.svg"
+                src={niosmoLogo}
                 alt="Niosmo"
               />
             </Link>
