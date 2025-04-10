@@ -1,15 +1,21 @@
 import React, { useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 import type { Engine } from 'tsparticles-engine';
+import { useNotification } from '../context/NotificationContext';
 
 const Hero = () => {
+  const { showNotification } = useNotification();
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
+
+  const handleButtonClick = (action: string) => {
+    showNotification(`The ${action} feature is coming soon! Stay tuned for updates.`);
+  };
 
   return (
     <div className="relative bg-gradient-to-br from-light-50/50 to-light-100/50 dark:from-dark-900/50 dark:to-dark-800/50 overflow-hidden">
@@ -104,12 +110,18 @@ const Hero = () => {
               You are not alone. Get a PulseCheck with MyMoneyMedic today and take control of your financial future.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link to="/pulsecheck" className="btn-primary">
+              <button
+                onClick={() => handleButtonClick('Get Your FREE Pulse Check Now')}
+                className="btn-primary"
+              >
                 Get Your FREE Pulse Check Now
-              </Link>
-              <Link to="/how-it-works" className="btn-secondary">
+              </button>
+              <button
+                onClick={() => handleButtonClick('Learn How It Works')}
+                className="btn-secondary"
+              >
                 Learn How It Works
-              </Link>
+              </button>
             </div>
           </motion.div>
           

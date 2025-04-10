@@ -1,7 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNotification } from '../context/NotificationContext';
 
 const Features = () => {
+  const { showNotification } = useNotification();
+
+  const handleFeatureClick = (title: string) => {
+    showNotification(`The ${title} feature is coming soon! Stay tuned for updates.`);
+  };
+
   const features = [
     {
       id: 1,
@@ -61,7 +68,8 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group relative overflow-hidden bg-light-50 dark:bg-dark-700 rounded-xl p-8 text-center hover:shadow-[0_8px_30px_rgba(0,229,117,0.1)] dark:hover:shadow-[0_8px_30px_rgba(0,229,117,0.2)] transition-all duration-500 hover:-translate-y-2"
+              className="group relative overflow-hidden bg-light-50 dark:bg-dark-700 rounded-xl p-8 text-center hover:shadow-[0_8px_30px_rgba(0,229,117,0.1)] dark:hover:shadow-[0_8px_30px_rgba(0,229,117,0.2)] transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+              onClick={() => handleFeatureClick(feature.title)}
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-primary-500/10 rounded-full blur-xl group-hover:opacity-100 opacity-0 transition-opacity duration-500" />

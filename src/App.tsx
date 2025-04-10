@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import { NotificationProvider } from './context/NotificationContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -13,20 +14,22 @@ import MetaTags from './components/MetaTags';
 const App = () => {
   return (
     <ThemeProvider>
-      <Router>
-        <MetaTags />
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-grow">
-            <Hero />
-            <Features />
-            <Divider />
-            <News />
-            <Newsletter />
-          </main>
-          <Footer />
-        </div>
-      </Router>
+      <NotificationProvider>
+        <Router>
+          <MetaTags />
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-grow">
+              <Hero />
+              <Features />
+              <Divider />
+              <News />
+              <Newsletter />
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </NotificationProvider>
     </ThemeProvider>
   );
 };

@@ -1,18 +1,19 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNotification } from '../context/NotificationContext';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
+  const { showNotification } = useNotification();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log('Subscribing email:', email);
+    showNotification('Thank you for subscribing! The newsletter feature will be available soon.');
     setEmail('');
   };
 
   return (
-    <section className="section bg-light-50 dark:bg-dark-900">
+    <section className="section bg-primary-500/10 dark:bg-primary-500/5">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,12 +34,12 @@ const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="flex-grow px-4 py-3 rounded-lg border border-light-300 dark:border-dark-700 bg-light-50 dark:bg-dark-800 text-light-900 dark:text-dark-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="flex-1 px-6 py-3 rounded-lg bg-light-50 dark:bg-dark-700 text-light-900 dark:text-dark-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
               required
             />
             <button
               type="submit"
-              className="btn-primary whitespace-nowrap"
+              className="px-6 py-3 bg-primary-500 text-dark-900 font-medium rounded-lg hover:bg-primary-600 transition-colors"
             >
               Subscribe
             </button>

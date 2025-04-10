@@ -1,13 +1,14 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import niosmoLogo from '../assets/images/niosmo-logo.png';
 import { useTheme } from '../context/ThemeContext';
+import { useNotification } from '../context/NotificationContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { showNotification } = useNotification();
 
   const navigation = [
     { name: 'PulseCheck', href: '/pulsecheck' },
@@ -17,28 +18,35 @@ const Navbar = () => {
     { name: 'MyMoneyMedic', href: '/mymoneymedic' },
   ];
 
+  const handleLinkClick = (name: string) => {
+    showNotification(`The ${name} feature is coming soon! Stay tuned for updates.`);
+  };
+
   return (
     <nav className="fixed w-full bg-dark-800/20 backdrop-blur-md z-50">
       <div className="container-custom py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <button
+            className="flex items-center"
+            onClick={() => handleLinkClick('Home')}
+          >
             <img
               className="h-8 w-auto"
               src={niosmoLogo}
               alt="Niosmo"
             />
-          </Link>
+          </button>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
+              <button
                 key={item.name}
-                to={item.href}
+                onClick={() => handleLinkClick(item.name)}
                 className="nav-link"
               >
                 {item.name}
-              </Link>
+              </button>
             ))}
             <button
               onClick={toggleTheme}
@@ -92,14 +100,16 @@ const Navbar = () => {
             className="md:hidden mt-4 space-y-4"
           >
             {navigation.map((item) => (
-              <Link
+              <button
                 key={item.name}
-                to={item.href}
-                className="block text-dark-200 hover:bg-dark-700 px-4 py-2 rounded-md"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  handleLinkClick(item.name);
+                  setIsOpen(false);
+                }}
+                className="block text-dark-200 hover:bg-dark-700 px-4 py-2 rounded-md w-full text-left"
               >
                 {item.name}
-              </Link>
+              </button>
             ))}
           </motion.div>
         )}
